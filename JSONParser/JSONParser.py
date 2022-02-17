@@ -9,9 +9,10 @@
 """
 import json
 import re
+import datetime
 
 
-def decor(func):
+def decorator(func):
     def wrap(*args, **kwargs):
         func(*args, **kwargs)
         print('__________________________________________')
@@ -30,7 +31,7 @@ def Create_parsed_list(json_for_parse, to_json=[]):
     return to_json
 
 
-@decor
+@decorator
 def Min_max_values(json_for_parse):
     created_list = []
     updated_list = []
@@ -43,7 +44,7 @@ def Min_max_values(json_for_parse):
     print("Maximum updated date:", max(updated_list))
 
 
-@decor
+@decorator
 def Counting(string_for_count):
     print("Number of \"created\":", len(re.findall(created_pattern, str(string_for_count))))
     print("Number of \"updated\":", len(re.findall(updated_pattern, str(string_for_count))))
