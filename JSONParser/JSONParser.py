@@ -9,12 +9,11 @@
 """
 import json
 import re
-import datetime
 
 
 def decorator(func):
-    def wrap(*args, **kwargs):
-        func(*args, **kwargs)
+    def wrap(*args):
+        func(*args)
         print('__________________________________________')
 
     return wrap
