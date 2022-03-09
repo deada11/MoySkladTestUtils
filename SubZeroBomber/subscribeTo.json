@@ -1,0 +1,28 @@
+{
+    "accountId": "4615c8f6-0e7b-11e2-06e0-3c4a92f3a0a7",
+    "source": {
+        "type": {
+            "id": "3b339e7f-eb56-40ee-9d36-79af20d578f8"
+        },
+        "actor": {
+
+        }
+    },
+    "sum": {
+        "declared": "444.44"
+    },
+    "comment": "'); select * from subzero.ticket;",
+    "subscribeTo": {
+        "product": {
+            "id": "14a9364b-be26-4f40-8a32-49da2109c997"
+        },
+        "tariff": {
+            "id": "c725c943-b249-4f14-bb58-833c624917e0"
+        },
+        "period": {
+            "value": "1",
+            "measure": "DAYS"
+        },
+        "demoPeriod": true
+    }
+}
