@@ -12,14 +12,16 @@ import re
 
 
 def decorator(func):
-    def wrap(*args):
-        func(*args)
+    def wrap(*args, **kwargs):
+        func(*args, **kwargs)
         print('__________________________________________')
 
     return wrap
 
 
-def Create_parsed_list(json_for_parse, to_json=[]):
+def Create_parsed_list(json_for_parse, to_json=None):
+    if to_json is None:
+        to_json = []
     for section in json_for_parse.items():
         for i in range(len(section[1])):
             to_json.append(
@@ -36,11 +38,16 @@ def Min_max_values(json_for_parse):
     updated_list = []
     for element in Create_parsed_list(json_for_parse):
         created_list.append(element.get("created"))
-        updated_list.append(element.get("updated"))
-    print("Minimum created date:", min(created_list))
-    print("Maximum created date:", max(created_list))
-    print("Minimum updated date:", min(updated_list))
-    print("Maximum updated date:", max(updated_list))
+        if element.get("updated") is None:
+            continue
+        else:
+            updated_list.append(element.get("updated"))
+
+    # Ниже вывод списков, а не строк.
+    print("Minimum created date:", *(min(created_list).split("T")))
+    print("Maximum created date:", *(max(created_list).split("T")))
+    print("Minimum updated date:", *(min(updated_list).split("T")))
+    print("Maximum updated date:", *(max(updated_list).split("T")))
 
 
 @decorator
