@@ -27,7 +27,8 @@ def Create_parsed_list(json_for_parse, to_json=None):
             to_json.append(
                 dict(id=section[1][i].get("id"), created=section[1][i].get("created"),
                      updated=section[1][i].get("updated"), partnerId=section[1][i].get("partnerId"),
-                     partnerCode=section[1][i].get("partnerCode"))
+                     partnerCode=section[1][i].get("partnerCode"),
+                     yclid=section[1][i].get("yandexClientId"))
             )
     return to_json
 
@@ -36,18 +37,22 @@ def Create_parsed_list(json_for_parse, to_json=None):
 def Min_max_values(json_for_parse):
     created_list = []
     updated_list = []
+    yclid_list = []
     for element in Create_parsed_list(json_for_parse):
         created_list.append(element.get("created"))
         if element.get("updated") is None:
             continue
         else:
             updated_list.append(element.get("updated"))
+        if element.get("yclid") != [] and element.get("yclid") != ["undefined"]:
+            yclid_list.append(element.get("yclid"))
 
     # Ниже вывод списков, а не строк.
     print("Minimum created date:", *(min(created_list).split("T")))
     print("Maximum created date:", *(max(created_list).split("T")))
     print("Minimum updated date:", *(min(updated_list).split("T")))
     print("Maximum updated date:", *(max(updated_list).split("T")))
+    print("yclid count:", len(yclid_list))
 
 
 @decorator
@@ -56,12 +61,14 @@ def Counting(string_for_count):
     print("Number of \"updated\":", len(re.findall(updated_pattern, str(string_for_count))))
     print("Number of not null \"partnerId\":", len(re.findall(partnerId_pattern, str(string_for_count))))
     print("Number of not null \"partnerCode\":", len(re.findall(partnerCode_pattern, str(string_for_count))))
+    print("Number of not null \"yclid\":", len(re.findall(yclid_pattern, str(string_for_count))))
 
 
 created_pattern = r'created'
 updated_pattern = r'updated'
 partnerId_pattern = r'partnerId'
 partnerCode_pattern = r'partnerCode'
+yclid_pattern = r'yandexClientId'
 
 file_name = 'ExportAccountRequest.json'
 
