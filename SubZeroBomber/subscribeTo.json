@@ -1,28 +1,30 @@
 {
-    "accountId": "4615c8f6-0e7b-11e2-06e0-3c4a92f3a0a7",
+    "accountId": "5e9cc624-02b3-11ed-0a83-0336000002be",
     "source": {
         "type": {
-            "id": "3b339e7f-eb56-40ee-9d36-79af20d578f8"
+            "id": "83aa62a3-f20c-4052-9bea-3674fa6076fd"
         },
         "actor": {
-
+            "id": "0edf5ced-bb50-11ec-0a81-02ee00000002",
+            "username": "admin@tester"
         }
     },
     "sum": {
         "declared": "444.44"
     },
-    "comment": "'); select * from subzero.ticket;",
+    "comment": "tester",
     "subscribeTo": {
         "product": {
-            "id": "14a9364b-be26-4f40-8a32-49da2109c997"
+            "id": "9ac7876f-e03e-11ec-0a82-0b880000000e"
         },
         "tariff": {
-            "id": "c725c943-b249-4f14-bb58-833c624917e0"
+            "id": "cbd910e9-ca7b-4a06-a0b4-c74502b75344"
         },
         "period": {
             "value": "1",
-            "measure": "DAYS"
+            "measure": "MONTHS"
         },
-        "demoPeriod": true
+        "demoPeriod": false,
+        "trial": false
     }
 }
